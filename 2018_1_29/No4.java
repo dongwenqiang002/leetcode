@@ -12,7 +12,7 @@
  */
 public class No4 {
 
-    public static void main(String[] args) {
+    public static void main(String [] args) {
         No4 o = new No4();
         String s = "CaaaC";
         int i = o.firstUniqChar(s);
