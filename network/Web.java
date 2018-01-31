@@ -20,9 +20,10 @@ public class Web {
 
 class MyHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
+
         System.out.println("-----------------------");
 
-       // HttpContext context = t.getHttpContext();
+        // HttpContext context = t.getHttpContext();
         //System.out.println("context:\t\t" + context);
 
         //请求类型 (GET/POST)
@@ -37,15 +38,17 @@ class MyHandler implements HttpHandler {
 
         //获取从 / 开始的的uri
         URI uri = t.getRequestURI();
-        System.out.println("uri:\t\t\t"+uri.toString());
+        System.out.println("uri:\t\t\t" + uri.toString());
 
         System.out.println("-----------------------");
 
 
-        String response = "<font color='#ff0000'><form method=\"POST\" action=\"/aasdaa\"><input name=\"a\" /><input type=\"submit\" value=\"sss\"/></form>come on baby</font>";
+        String response = "<font color='#ff0000'><form method=\"POST\" action=\"/control\"><input name=\"a\" /><input" +
+                " type=\"submit\" value=\"sss\"/></form>come on baby</font>";
         t.sendResponseHeaders(200, response.length());
         OutputStream os = t.getResponseBody();
         os.write(response.getBytes());
         os.close();
     }
+
 }
