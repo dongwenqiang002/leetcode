@@ -5,15 +5,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URI;
 
 public class Web {
 
     public static void main(String[] args) throws IOException {
-        HttpServer httpServer = HttpServer.create(new InetSocketAddress(8080), 0);
-        httpServer.createContext("/", new MyHandler());// 用MyHandler类内处理到/的请求
-        httpServer.setExecutor(null); // creates a default executor
-        httpServer.start();
+//        HttpServer httpServer = HttpServer.create(new InetSocketAddress(8080), 0);
+//        httpServer.createContext("/", new MyHandler());// 用MyHandler类内处理到/的请求
+//        httpServer.setExecutor(null); // creates a default executor
+//        httpServer.start();
+        ServerSocket socke = new ServerSocket(8080);
+        byte[] b = new byte[1000];
+
+        while(true){
+            Socket s = socke.accept();
+            InputStream in = s.getInputStream();
+            in.read(b);
+            System.out.println(new String(b));
+            System.out.println("-----------------------------------------");
+
+        }
     }
 
 }
