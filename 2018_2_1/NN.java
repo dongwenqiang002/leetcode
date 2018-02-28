@@ -1,11 +1,18 @@
+import ann.MBean;
+
+import javax.annotation.Resource;
 import java.util.Set;
 import java.util.TreeSet;
 
 /**
  *
  */
+@MBean
 public class NN {
 
+    public String aa(){
+        return "adasdas";
+    }
     public static void main(String[] args) {
         NN o = new NN();
         int i = 564683516;

@@ -7,17 +7,26 @@ public class No21 {
 
     public static void main(String[] args) {
         No21 o = new No21();
-        int[] n1 = {2,3,1,1,4,0,0,0,0,0,0};
+        int[] n1 = {2, 3, 1, 1, 4};
         int[] n2 = {0};
         System.out.println(o.canJump(n1));
     }
 
     public boolean canJump(int[] nums) {
-        for (int i = 1; i <nums[0]+1 ; i++) {
-            if(i >= nums.length-1)return true;
-//            if(i+nums[i]+1 == nums.length-1)return true;
-//            if(i+nums[i]+1 > nums.length-1)return false;
-            if( canJump(Arrays.copyOfRange(nums, i,nums.length)))return true;
+        if (nums.length == 1) return true;
+        int temp, d=0;
+        for (int i = 0; i < nums.length; ) {
+            temp = 0;
+            for (int j = i + 1, r = 1; j <= nums[i] + i; j++, r++) {
+                if (j >= nums.length - 1) return true;
+                if ((nums[j] + r) > temp) {
+                    temp = nums[j] + r;
+                    d = j;
+                }
+            }
+            i = d;
+            if (nums[i] == 0) return false;
+            if (i == nums.length - 1) return true;
         }
         return false;
     }
